@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <unordered_map>
 
-class OldSolution {
+class Solution1 {
 public:
   std::vector<int> result;
   std::vector<int> intersection(std::vector<int> nums1, std::vector<int> nums2) {
@@ -22,18 +22,23 @@ public:
 };
 
 //this one uses set because set elements are ordered and unique
-class Solution {
+class Solution2 {
 public:
   std::set<int> s1,s2;
-  std::vector<int> intersection(std::vector<int> n1, std::vector<int> n2) {
-
-        
+  std::vector<int> result;
+  std::vector<int> intersection(std::vector<int> v1, std::vector<int> v2) {
+    for(int i : v1) s1.insert(i);
+    for(int i : s1) {
+      if(std::find(v2.begin(), v2.end(), i) != v2.end()) s2.insert(i);
+    }
+    for(int i : s2) result.push_back(i);
+    return result;
   }
 };
 
 
 int main() {
-  OldSolution s;
+  Solution2 s;
   //std::vector s1{4,9,5};
   //std::vector s2{9,4,9,8,4};
   for(int i : s.intersection({4,9,5},{9,4,9,8,4})) {
