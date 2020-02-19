@@ -3,6 +3,7 @@
 #include <set>
 #include <algorithm>
 #include <unordered_set>
+#include <unordered_map>
 
 class Solution1 {
 public:
@@ -58,8 +59,25 @@ class Solution3 {
     }
 };
 
+//using unordered map
+class Solution {
+  public:
+    std::vector<int> result;
+    std::vector<int> intersection(std::vector<int> v1, std::vector<int> v2) {
+      std::unordered_map<int,bool> m;
+      for(int i : v1) m[i] = true;
+      for(auto it : v1) {
+        if(m.find(it) != m.end() && m[it]) {
+          result.push_back(it);
+          m[it] = false;
+        }
+      }
+      return result;
+    }    
+};
+
 int main() {
-  Solution3 s;
+  Solution s;
   //std::vector s1{4,9,5};
   //std::vector s2{9,4,9,8,4};
   for(int i : s.intersection({4,9,5},{9,4,9,8,4})) {
