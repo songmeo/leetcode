@@ -2,7 +2,7 @@
 #include <vector>
 #include <set>
 #include <algorithm>
-#include <unordered_map>
+#include <unordered_set>
 
 class Solution1 {
 public:
@@ -21,7 +21,7 @@ public:
   }
 };
 
-//this one uses set because set elements are ordered and unique
+//this one uses set because set elements are ordered and unique so we could avoid duplicates
 class Solution2 {
 public:
   std::set<int> s1,s2;
@@ -36,9 +36,22 @@ public:
   }
 };
 
+//this one uses unordered_set. Unordered set is faster than set to access individual elements by their key, and less efficient for range iteration
+class Solution3 {
+  public:
+    std::unordered_set<int> s1;
+    std::vector<int> result;
+    std::vector<int> intersection(std::vector<int> v1, std::vector<int> v2) {
+      for(int i : v1) s1.insert(i);
+      for(int i : v2) {
+        if(s1.find(i) != s1.end() && find(result.begin(), result.end(), i) == result.end()) result.push_back(i);
+      }
+      return result;
+    }
+};
 
 int main() {
-  Solution2 s;
+  Solution3 s;
   //std::vector s1{4,9,5};
   //std::vector s2{9,4,9,8,4};
   for(int i : s.intersection({4,9,5},{9,4,9,8,4})) {
