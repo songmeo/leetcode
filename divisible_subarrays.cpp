@@ -6,7 +6,9 @@ using namespace std;
 class Solution {
 public:
   int disvisibleSubarrays(vector<int>& v, int k) {
-  
+    for(int i = 0; i < v.size(); i++) {
+      
+    }
   }    
 };
 
