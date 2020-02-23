@@ -9,27 +9,26 @@ class Solution {
 public:
   bool isValid(string str) {
     stack<char> s;
-    unordered_map<char, char> m;
+    map<char, char> m;
     m['{'] = '}';
     m['('] = ')';
     m['['] = ']';
-    int len = str.length();
     for(int i = 0; i < str.length(); ++i) {
-      unordered_map<char, char>::iterator it;
-      for(it = m.begin(); it != m.end(); ++it) {
-        if(it->first == str[i] && s.top() == it->second)
-          s.pop(); 
-      }
-      if(it == m.end())
+      auto it = m.find(str[i]);
+      if(it != m.end()) 
         s.push(str[i]);
+      else {
+        if(m.find(s.top())->second == str[i]) 
+          s.pop();
+      }
     }
     if(s.empty()) return true;
-    return false;  
+    return false;
   }
 };
 
 int main() {
-  string str = "[[{{}}]]";
+  string str = "[[}}}}";
   Solution s;
   cout << s.isValid(str);
   return 0;
