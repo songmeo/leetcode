@@ -17,18 +17,15 @@ public:
       auto it = m.find(str[i]);
       if(it != m.end()) 
         s.push(str[i]);
-      else {
-        if(m.find(s.top())->second == str[i]) 
-          s.pop();
-      }
+      else if(!s.empty() && m.find(s.top())->second == str[i]) 
+        s.pop(); 
     }
-    if(s.empty()) return true;
-    return false;
+    return s.empty();
   }
 };
 
 int main() {
-  string str = "[[}}}}";
+  string str = "}";
   Solution s;
   cout << s.isValid(str);
   return 0;
