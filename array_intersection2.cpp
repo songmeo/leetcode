@@ -13,7 +13,7 @@ public:
     }
     for(int i : nums2) {
       auto it = m.find(i);
-      if(it->second == false) {
+      if(it != m.end()) {
         m.erase(it);
         result.push_back(i);
       }
