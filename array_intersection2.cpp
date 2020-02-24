@@ -3,7 +3,8 @@
 #include <map>
 using namespace std;
 
-class Solution {
+//using multimap
+class Solution1 {
 public:
   vector<int> result;
   vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
@@ -15,6 +16,25 @@ public:
       auto it = m.find(i);
       if(it != m.end()) {
         m.erase(it);
+        result.push_back(i);
+      }
+    }
+    return result;
+  }
+};
+
+//using unordered map
+class Solution {
+public:
+  vector<int> result;
+  vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+    map<int,int> m;
+    for(int i : nums1) {
+      m[i]++;
+    }
+    for(int i : nums2) {
+      if(m.find(i) != m.end() && m[i] > 0) {
+        m[i]--;
         result.push_back(i);
       }
     }
