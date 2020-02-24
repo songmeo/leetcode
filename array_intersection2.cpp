@@ -1,21 +1,20 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include <set>
 using namespace std;
 
 class Solution {
 public:
   vector<int> result;
   vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
-    set<int> s;
+    multimap<int,bool> m;
     for(int i : nums1) {
-      s.insert(i);
+      m.insert(pair<int,bool>(i,false));
     }
     for(int i : nums2) {
-      auto it = s.find(i);
-      if(it != s.end()) {
-        s.erase(it);
+      auto it = m.find(i);
+      if(it->second == false) {
+        m.erase(it);
         result.push_back(i);
       }
     }
