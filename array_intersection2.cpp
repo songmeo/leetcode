@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <unordered_map>
 using namespace std;
 
 //using multimap
@@ -28,7 +29,7 @@ class Solution {
 public:
   vector<int> result;
   vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
-    map<int,int> m;
+    unordered_map<int,int> m;
     for(int i : nums1) {
       m[i]++;
     }
