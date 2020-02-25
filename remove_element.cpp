@@ -12,15 +12,12 @@ public:
     int mid;
     while(max >= min) {
       mid = (max + min)/2;
-      if(k > v[mid]) {
+      if(k > v[mid])
         min = mid + 1;
-      }
-      else if(k < v[mid]) {
+      else if(k < v[mid])
         max = mid - 1;
-      }
-      else {
+      else
         return mid;
-      }
     }
     return -1;
   }
