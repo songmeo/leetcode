@@ -23,7 +23,7 @@ class Solution {
 public:
   int maxProfit(vector<int>& v) {
     int min_buy = INT_MAX;
-    int max_profit = INT_MIN;
+    int max_profit = 0;
     for(auto it = v.begin(); it != v.end(); ++it) {
       if(*it < min_buy) min_buy = *it;
       else if(*it - min_buy > max_profit) max_profit = *it - min_buy; 
