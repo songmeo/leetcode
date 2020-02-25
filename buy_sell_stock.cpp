@@ -1,10 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <climits>
 using namespace std;
 
 // brute force solution
-class Solution {
+class Solution1 {
 public:
   int maxProfit(vector<int>& v) {
     int diff;
@@ -14,6 +15,20 @@ public:
       }
     }
     return diff;
+  }
+};
+
+//algorithm
+class Solution {
+public:
+  int maxProfit(vector<int>& v) {
+    int min_buy = INT_MAX;
+    int max_profit = INT_MIN;
+    for(auto it = v.begin(); it != v.end(); ++it) {
+      if(*it < min_buy) min_buy = *it;
+      else if(*it - min_buy > max_profit) max_profit = *it - min_buy; 
+    }
+    return max_profit;    
   }
 };
 
