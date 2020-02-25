@@ -1,8 +1,6 @@
 #include <iostream>
-#include <deque>
 using namespace std;
 
-//deque is short for double ended queue
 class MinStack {
 public:
   deque<int> myStack{};
@@ -23,8 +21,7 @@ public:
   }
     
   int getMin() {
-    return 0;      
-  }
+  }    
 };
 
 int main() {
