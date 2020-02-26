@@ -5,7 +5,7 @@
 
 using namespace std;
 
-//using std algorithm
+//using std algorithm. This solution is faster than hash table :D
 class Solution1 {
 public:
   bool containsDuplicate(vector<int>& nums) {
