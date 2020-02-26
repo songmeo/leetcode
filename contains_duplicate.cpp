@@ -36,6 +36,7 @@ public:
   }
   
   bool containsDuplicate(vector<int>& v) {
+    if(v.empty()) return 0;
     sort(v.begin(), v.end());
     for(int i = 0; i < v.size() - 1; ++i) {
       vector<int> tmp(v.begin() + i + 1, v.end());
@@ -48,7 +49,7 @@ public:
 };
 
 int main() {
-  vector<int> v{1,2,3,1};
+  vector<int> v{};
   Solution s;
   cout << s.containsDuplicate(v);
   return 0;
