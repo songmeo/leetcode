@@ -10,13 +10,18 @@ public:
   bool containsDuplicate(vector<int>& nums) {
     int s1 = nums.size();
     sort(nums.begin(), nums.end());
-    auto ip = unique(nums.begin(),nums.end());
-    nums.resize(distance(nums.begin(),ip));
-    return s1 == nums.size();
+    auto it = unique(nums.begin(), nums.end());
+    nums.resize(distance(nums.begin(), it));
+    /*
+    we can also use nums.erase(unique(nums.begin(),nums.end()), nums.end());
+    */
+    return s1 != nums.size();
   }
 };
 
-//use binarySearch
+/*
+use binarySearch (doesn't work because of memory exceeded)
+
 class Solution {
 public:
   int binarySearch(vector<int>& v, int k) {
@@ -47,10 +52,11 @@ public:
     return false;
   }
 };
+*/
 
 int main() {
-  vector<int> v{};
-  Solution s;
+  vector<int> v{1,1,2,3};
+  Solution1 s;
   cout << s.containsDuplicate(v);
   return 0;
 }
