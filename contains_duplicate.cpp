@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <set>
 
 using namespace std;
 
@@ -12,9 +13,7 @@ public:
     sort(nums.begin(), nums.end());
     auto it = unique(nums.begin(), nums.end());
     nums.resize(distance(nums.begin(), it));
-    /*
-    we can also use nums.erase(unique(nums.begin(),nums.end()), nums.end());
-    */
+    //we can also use nums.erase(unique(nums.begin(),nums.end()), nums.end());
     return s1 != nums.size();
   }
 };
@@ -54,8 +53,21 @@ public:
 };
 */
 
+//use hash table
+class Solution {
+public:
+  bool containsDuplicate(vector<int>& nums) {
+    set<int> s;
+    for(int i : nums) {
+      if(s.find(i) != s.end()) return true;
+      else s.insert(i);
+    }
+    return false;      
+  }
+};
+
 int main() {
-  vector<int> v{1,1,2,3};
+  vector<int> v{1,2,3};
   Solution1 s;
   cout << s.containsDuplicate(v);
   return 0;
