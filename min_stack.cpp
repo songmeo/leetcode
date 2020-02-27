@@ -1,32 +1,38 @@
 #include <iostream>
+#include <stack>
 using namespace std;
 
 class MinStack {
 public:
-  deque<int> myStack{};
-  MinStack() {
-        
-  }
-    
+  stack<int> Stack;
+  stack<int> MinStack;    
   void push(int x) {
-    myStack.push_back(x);
+    Stack.push(x);
+    if(MinStack.empty() || x <= MinStack.top()) MinStack.push(x);
   }
     
   void pop() {
-    myStack.pop_back();
+    if(Stack.top() == MinStack.top()) MinStack.pop();
+    Stack.pop();
   }
     
   int top() {
-    return myStack.back();
+    return Stack.top();
   }
     
   int getMin() {
+    return MinStack.top();
   }    
 };
 
 int main() {
   MinStack ms;
-  ms.push(1);
-  cout << ms.top();
+  ms.push(-2);
+  ms.push(0);
+  ms.push(-3);
+  ms.getMin();
+  ms.pop();
+  ms.top();
+  ms.getMin();
   return 0;
 }
