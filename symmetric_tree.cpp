@@ -1,5 +1,6 @@
 #include <iostream>
 
+using namespace std;
 struct TreeNode {
   int val;
   TreeNode *left;
@@ -10,10 +11,14 @@ struct TreeNode {
 class Solution {
 public:
   bool isSymmetric(TreeNode* root) {
-  
+    return true;
   }
 };
 
 
 int main() {
+  Solution s;
+  //cout << s.isSymmetric;
+  srand(time(NULL));
+  return 0;
 }
