@@ -8,6 +8,16 @@ struct TreeNode {
   TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
+TreeNode* insert(int arr[], TreeNode* root, int i, int n) {
+  if(i < n) {
+	TreeNode* tmp = new TreeNode(arr[i]);
+	root = tmp;
+	root->left = insert(arr, root->left, i*2 + 1, n);
+	root->right = insert(arr, root->right, i*2 + 2, n);
+  }
+  return root;
+}
+
 class Solution {
 public:
   bool isSymmetric(TreeNode* root) {
@@ -18,7 +28,8 @@ public:
 
 int main() {
   Solution s;
-  //cout << s.isSymmetric;
-  srand(time(NULL));
+  int arr[] = {1,2,2,3,4,4,3};
+  TreeNode* root = insert(arr,root,0,sizeof(arr)/sizeof(arr[0]));
+  cout << s.isSymmetric(root);
   return 0;
 }
