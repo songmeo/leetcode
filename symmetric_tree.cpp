@@ -49,6 +49,10 @@ class Solution {
 		  q.pop();
 		  if(!t1 && !t2) continue;
 		  if(!t1 || !t2 || t1->val != t2->val) return false;
+		  q.push(t1->left);
+		  q.push(t2->right);
+		  q.push(t1->right);
+		  q.push(t2->left);
 		}
 		return true;
 	  }
