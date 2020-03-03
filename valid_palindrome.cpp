@@ -6,12 +6,14 @@ using namespace std;
 class Solution {
 public:
 	bool isPalindrome(string s) {
-		for(auto it = s.begin(); it != s.end(); ++it) {
+		for(auto it = s.begin(); it != s.end();) {
 			*it = tolower(*it);
-			if(*it < 97 || *it > 122) s.erase(it);
+			if(!isalpha(*it)) it = s.erase(it);
+			else ++it;
 		}
-		cout << s << endl;
-		return 0;
+		string tmp = s;
+		reverse(s.begin(),s.end());
+		return s == tmp;
 	}
 };
 
