@@ -1,13 +1,25 @@
 #include <iostream>
 #include <string>
-#include <algorithm>
+#include <unordered_map>
 
 using namespace std;
 
+/*
+ * using hashmap
+ * putting characters to hashmap costs O(n)
+ * iterating through the string again also cost O(n)
+ */
 class Solution {
 public: 
 	int firstUniqChar(string s) {
-		return unique(s.begin(), s.end()) - s.begin();
+		unordered_map<char,int> um;
+		for(char i : s) {
+			um[i]++;
+		}
+		for(int i = 0; i < s.length(); ++i) {
+			if(um[s[i]] == 1) return i;
+		}
+		return -1;
 	}
 };
 
