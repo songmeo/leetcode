@@ -8,6 +8,7 @@ using namespace std;
  * using hashmap
  * putting characters to hashmap costs O(n)
  * iterating through the string again also cost O(n)
+ * space complexity is O(1) because there are 26 characters in alphabet
  */
 class Solution {
 public: 
