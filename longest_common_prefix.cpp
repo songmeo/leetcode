@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
 using namespace std;
+
 //naive way
 class Solution {
 public:
@@ -14,6 +14,7 @@ public:
 	
 	string longestCommonPrefix(vector<string>& strs) {
 		if(strs.empty()) return "";
+		if(strs.size() == 1) return strs[0]; 
 		for(string s : strs) {
 			if(s.empty()) return "";
 		}
