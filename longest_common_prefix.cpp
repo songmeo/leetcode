@@ -13,6 +13,9 @@ public:
 	}
 	
 	string longestCommonPrefix(vector<string>& strs) {
+		for(string s : strs) {
+			if(s.empty()) return "";
+		}
 		string cp = commonPrefix(strs[0],strs[1]);
 		for(int i = 2; i < strs.size(); i++) {
 			cp = commonPrefix(cp, strs[i]);
