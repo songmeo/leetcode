@@ -13,6 +13,7 @@ public:
 	}
 	
 	string longestCommonPrefix(vector<string>& strs) {
+		if(strs.empty()) return "";
 		for(string s : strs) {
 			if(s.empty()) return "";
 		}
