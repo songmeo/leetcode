@@ -3,12 +3,12 @@
 #include <string>
 using namespace std;
 
-//naive way
+//horizontal way: time O(n) (sum of all characters in the string), space O(1) (always use the same space)
 class Solution1 {
 public:
 	string commonPrefix(string a, string b) {
 		size_t i;
-		for(i = 0; i < a.length() && a[i] == b[i]; i++);
+		for(i = 0; i < min(a.length(),b.length()) && a[i] == b[i]; i++);
 		return a.substr(0,i);
 	}
 	
@@ -27,7 +27,7 @@ public:
 	}
 };
 
-//divide and conquer
+//divide and conquer: time O(n), space O(m.logn) (memory overhead because recursive calls are stored in the execution stack)
 class Solution {
 public:
 	string commonPrefix(string a, string b) {
