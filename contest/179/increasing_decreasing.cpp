@@ -12,13 +12,17 @@ public:
 			m[c]++;
 		}
 		while(result.length() < s.length()) {
-			for(auto it = m.begin(); it != m.end() && it->second > 0; ++it) {
-				result += it->first;
-				(it->second)--;
+			for(auto it = m.begin(); it != m.end(); ++it) {
+				if(it->second > 0) {
+					result += it->first;
+					(it->second)--;
+				}
 			}
-			for(auto it = m.rbegin(); it != m.rend() && it->second > 0; ++it) {
-				result += it->first;
-				(it->second)--;
+			for(auto it = m.rbegin(); it != m.rend(); ++it) {
+				if(it->second > 0) {
+					result += it->first;
+					(it->second)--;
+				}
 			}
 		}
 		return result;
@@ -27,7 +31,7 @@ public:
 
 int main() {
 	Solution s;
-	string str = "aaaabbbbcccc";
+	string str = "leetcode";
 	cout << s.sortString(str);
 	return 0;
 }
