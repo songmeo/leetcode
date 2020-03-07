@@ -53,11 +53,11 @@ public:
 //using binary search
 class Solution {
 public:
-	bool isCommonPrefix(vector<string>& strs, int len) {
+	bool isCommon(vector<string>& strs, int len) {
 		string s1 = strs[0].substr(0,len);
 		for(string s : strs) {
-			for(size_t i = 0; i < s1.length(); ++i) {
-				if(s1[i] != s[i]) 
+			for(int i = 0; i < len; ++i) {
+				if(s[i] != s1[i])
 					return false;
 			}
 		}
@@ -65,21 +65,20 @@ public:
 	}
 	
 	string longestCommonPrefix(vector<string>& strs) {
-		if(strs.size() == 0) return "";
-		if(strs.size() == 1) return strs[0];
 		int minLen = INT_MAX;
 		for(string s : strs)
-			minLen = min(minLen, (int)s.length());
-		int low = 1;
-		int high = minLen;
-		while(low <= high) {
-			int mid = (low + high) / 2;
-			if(isCommonPrefix(strs, mid))
-				low = mid + 1;
+			minLen = min((int)s.length(), minLen);
+		int min = 0;
+		int max = minLen;
+		int mid = 0;
+		while(min <= max) {
+			mid = (min + max)/2;
+			if(isCommon(strs,mid))
+				min = mid + 1;
 			else
-				high = mid - 1;
+				max = mid - 1;
 		}
-		return strs[0].substr(0, (low + high) / 2);
+		return strs[0].substr(0,mid);
 	}
 };
 
