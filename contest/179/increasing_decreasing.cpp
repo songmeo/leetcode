@@ -16,7 +16,7 @@ public:
 				result += it->first;
 				(it->second)--;
 			}
-			for(auto it = m.rbegin(); it != m.rend() && it->second > 0; --it) {
+			for(auto it = m.rbegin(); it != m.rend() && it->second > 0; ++it) {
 				result += it->first;
 				(it->second)--;
 			}
@@ -27,7 +27,7 @@ public:
 
 int main() {
 	Solution s;
-	string str = "spo";
+	string str = "aaaabbbbcccc";
 	cout << s.sortString(str);
 	return 0;
 }
