@@ -1,7 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
+#include <climits>
 using namespace std;
+
 
 //horizontal way: time O(n) (sum of all characters in the string), space O(1) (always use the same space)
 class Solution1 {
@@ -28,7 +31,7 @@ public:
 };
 
 //divide and conquer: time O(n), space O(m.logn) (memory overhead because recursive calls are stored in the execution stack)
-class Solution {
+class Solution2 {
 public:
 	string commonPrefix(string a, string b) {
 		size_t i;
@@ -44,6 +47,39 @@ public:
 		string lcpleft = longestCommonPrefix(left);
 		string lcpright = longestCommonPrefix(right);
 		return commonPrefix(lcpleft, lcpright);
+	}
+};
+
+//using binary search
+class Solution {
+public:
+	bool isCommonPrefix(vector<string>& strs, int len) {
+		string s1 = strs[0].substr(0,len);
+		for(string s : strs) {
+			for(size_t i = 0; i < s1.length(); ++i) {
+				if(s1[i] != s[i]) 
+					return false;
+			}
+		}
+		return true;
+	}
+	
+	string longestCommonPrefix(vector<string>& strs) {
+		if(strs.size() == 0) return "";
+		if(strs.size() == 1) return strs[0];
+		int minLen = INT_MAX;
+		for(string s : strs)
+			minLen = min(minLen, (int)s.length());
+		int low = 1;
+		int high = minLen;
+		while(low <= high) {
+			int mid = (low + high) / 2;
+			if(isCommonPrefix(strs, mid))
+				low = mid + 1;
+			else
+				high = mid - 1;
+		}
+		return strs[0].substr(0, (low + high) / 2);
 	}
 };
 
