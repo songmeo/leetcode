@@ -3,7 +3,11 @@
 #include <map>
 
 using namespace std;
-//using map
+/*
+ * using map
+ * time: O(nlog(n))
+ * space: O(1) 
+*/
 class Solution1 {
 public:
 	void sortColors(vector<int>& nums) {
