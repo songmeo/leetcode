@@ -32,11 +32,11 @@ class Solution {
 public:
 	void sortColors(vector<int>& nums) {
 		int smaller = 0, larger = nums.size() - 1;
-		for(size_t i = 0; i < nums.size(); i++) {
+		for(int i = 0; i < (int)nums.size(); i++) {
 			if(nums[i] < 1)
 				swap(nums[i], nums[smaller++]);
 		}
-		for(size_t i = nums.size() - 1; i > 0; i--) {
+		for(int i = (int)nums.size() - 1; i > 0; i--) {
 			if(nums[i] > 1)
 				swap(nums[i], nums[larger--]);
 		}
