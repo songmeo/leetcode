@@ -25,7 +25,7 @@ public:
 };
 
 /*
- * time: O(n)
+ * time: O(n) (?)
  * space: O(1)
 */
 class Solution {
