@@ -3,6 +3,11 @@
 #include <vector>
 using namespace std;
 
+/*
+ * Time complexity: O(n)
+ * Space: O(1)
+ */
+ 
 class Solution {
 public:
 	vector<string> fizzBuzz(int n) {
@@ -15,12 +20,10 @@ public:
 			if(i % 5 == 0) {
 				s += "Buzz";
 			}
-			if(!s.empty()) {
-				re.push_back(s);
+			if(s.empty()) {
+				s += to_string(i);
 			}
-			else {
-				re.push_back(to_string(i));
-			}
+			re.push_back(s);
 		}
 		return re;
 	}
