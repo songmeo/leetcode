@@ -5,7 +5,7 @@
 using namespace std;
 /*
  * using map
- * time: O(nlog(n))
+ * time: O(n) because it's nlog(n) + n but there are always 3 elements in map so it's log(3)
  * space: O(1) 
 */
 class Solution1 {
@@ -25,7 +25,7 @@ public:
 };
 
 /*
- * time: O(n) (?)
+ * time: O(n)
  * space: O(1)
 */
 class Solution {
