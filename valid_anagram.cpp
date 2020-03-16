@@ -2,6 +2,11 @@
 #include <string>
 #include <algorithm>
 
+/*
+ * Introsort: quick sort -> heap sort -> insertion sort
+ * time: O(nlogn)
+ * space: logn
+*/
 class Solution {
 public:
     bool isAnagram(std::string s, std::string t) {
