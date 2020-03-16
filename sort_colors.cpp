@@ -4,7 +4,7 @@
 
 using namespace std;
 //using map
-class Solution {
+class Solution1 {
 public:
 	void sortColors(vector<int>& nums) {
 		map<int,int> m;
@@ -16,6 +16,25 @@ public:
 				nums.push_back(i.first);
 				i.second--;
 			}
+		}
+	}
+};
+
+/*
+ * time: O(n)
+ * space: O(1)
+*/
+class Solution {
+public:
+	void sortColors(vector<int>& nums) {
+		int smaller = 0, larger = nums.size() - 1;
+		for(size_t i = 0; i < nums.size(); i++) {
+			if(nums[i] < 1)
+				swap(nums[i], nums[smaller++]);
+		}
+		for(size_t i = nums.size() - 1; i > 0; i--) {
+			if(nums[i] > 1)
+				swap(nums[i], nums[larger--]);
 		}
 	}
 };
