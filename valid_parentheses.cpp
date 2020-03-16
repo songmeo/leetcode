@@ -5,7 +5,8 @@
 using namespace std;
 
 /*
- * time complexity: 
+ * time complexity: O(n)
+ * space complexity: O(n) the worst case is pushing the whole string to the stack
 */
 class Solution {
 public:
@@ -17,11 +18,11 @@ public:
 		};
 		stack<char> st;
 		for(auto it1 = str.begin(); it1 != str.end(); ++it1) {
-			if(m.find(*it1) != m.end()) {
-				st.push(*it1);
+			if(m.find(*it1) != m.end()) { //O(n)
+				st.push(*it1); //O(1)
 			}
-			else if(!st.empty() && (*it1) == m[st.top()]) {
-				st.pop();
+			else if(!st.empty() && (*it1) == m[st.top()]) { //O(1)
+				st.pop(); //O(1)
 			}
 			else {
 				return false;
