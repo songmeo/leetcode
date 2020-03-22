@@ -31,8 +31,8 @@ public:
 };
 
 //using hashSet as sliding window 
-//time complexity: O(n) space complexity: O(k)
-class Solution {
+//time complexity: O(n) space complexity: O(k) k is size of the set
+class Solution2{
 public:
 	int longestSubstr(string str) {
 		unordered_set<char> s;
@@ -45,6 +45,25 @@ public:
 			else {
 				s.erase(str[start++]);
 			}
+		}
+		return len;
+	}
+};
+
+class Solution {
+public:
+	int longestSubstr(string str) {
+		unordered_map<char, int> m;
+		int start = 0, end = 0, len = 0;
+		while(end < str.length()) {
+			if(m.find(str[end]) != m.end()) {
+
+			}
+			m[str[end]] = end;
+			len = max(len, end - start);
+			start = end + 1;
+			end++;
+			
 		}
 		return len;
 	}
