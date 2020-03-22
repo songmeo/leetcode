@@ -10,11 +10,12 @@ using namespace std;
 class Solution {
 public:
 	string longestSubstr(string s) {
-		unordered_map<char,int> m;
+		
 		string result;
 		int max_len = 0;
 		for(auto it1 = s.begin(); it1 != s.end(); it1++) {
 			int len = 0;
+			unordered_map<char,int> m;
 			string::iterator it2;
 			for(it2 = it1; it2 != s.end(); it2++) {
 				if(m.find(*it2) != m.end()) break;
