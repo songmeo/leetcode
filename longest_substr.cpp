@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <algorithm>
 using namespace std;
 
@@ -29,27 +30,23 @@ public:
 	}
 };
 
+//using hashSet as sliding window 
+//time complexity: O(n) space complexity: O(k)
 class Solution {
 public:
-	int longestSubstr(string s) {
-		unordered_map<char,int> m;
-		for(char c: s) {
-			m[c]++;
-		}
-		if(m.size() == 1) return 1;
-		int max_len = m.size();
-		for(auto it = s.begin(); it != s.end(); it++) {
-			int len = 0;
-			if(m[*it] > 1) {
-				string substr(it + 1, s.end());
-				string::iterator next_pos = find(it + 1, s.end(), *it);
-				if(next_pos != s.end()) {
-					len = next_pos - it;
-				}
-				if(len < max_len && len != 0 && len != 1) max_len = len;
+	int longestSubstr(string str) {
+		unordered_set<char> s;
+		int start = 0, end = 0, len = 0;
+		while(start < (int) str.length() && end < (int) str.length()) {
+			if(s.find(str[end]) == s.end()) {
+				s.insert(str[end++]);
+				len = max(len, end - start);
+			}
+			else {
+				s.erase(str[start++]);
 			}
 		}
-		return max_len;
+		return len;
 	}
 };
 
@@ -58,5 +55,6 @@ int main() {
 	cout << s.longestSubstr("abcabcbb") << endl;
 	cout << s.longestSubstr("bbbbb") << endl;
 	cout << s.longestSubstr("pwwkew") << endl;
+	cout << s.longestSubstr("abbacd") << endl;
 	return 0;
 }
