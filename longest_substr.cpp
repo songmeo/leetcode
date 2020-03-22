@@ -46,7 +46,7 @@ public:
 				if(next_pos != s.end()) {
 					len = next_pos - it;
 				}
-				if(len < max_len && len != 0) max_len = len;
+				if(len < max_len && len != 0 && len != 1) max_len = len;
 			}
 		}
 		return max_len;
