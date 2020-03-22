@@ -11,11 +11,20 @@ class Solution {
 public:
 	string longestSubstr(string s) {
 		unordered_map<char,int> m;
-		string result = "";
-		for(auto it = s.begin(); it != s.end(); it++) {
-			if(m.find(*it) != m.end()) return result;
-			result += *it;
-			m[*it]++;
+		string result;
+		int max_len = 0;
+		for(auto it1 = s.begin(); it1 != s.end(); it1++) {
+			int len = 0;
+			string::iterator it2;
+			for(it2 = it1; it2 != s.end(); it2++) {
+				if(m.find(*it2) != m.end()) break;
+				len++;
+				m[*it2]++;
+			}
+			if(len > max_len) {
+				max_len = len;
+				result = string(it1,it2);
+			}
 		}
 		return result;
 	}
@@ -23,6 +32,8 @@ public:
 
 int main() {
 	Solution s;
-	cout << s.longestSubstr("abcabcbb");
+	cout << s.longestSubstr("abcabcbb") << endl;
+	cout << s.longestSubstr("bbbbb") << endl;
+	cout << s.longestSubstr("pwwkew") << endl;
 	return 0;
 }
