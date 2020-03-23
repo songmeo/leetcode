@@ -16,9 +16,9 @@ public:
 	string longestPalindrome(string str) {
 		string result;
 		for(string::iterator it = str.begin(); it != str.end(); it++) {
-			string::iterator next = find(it + 1, str.end(), *it);
+			auto next = find_end(it + 1, str.end(), it, it);
 			string tmp;
-			if(next != str.end()) {
+			if(next != it) {
 				tmp = string(it, next + 1);
 			}
 			else {
