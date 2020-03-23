@@ -17,10 +17,14 @@ public:
 		string result;
 		for(string::iterator it = str.begin(); it != str.end(); it++) {
 			string::iterator next = find(it + 1, str.end(), *it);
+			string tmp;
 			if(next != str.end()) {
-				string tmp = string(it, next + 1);
-				if(validPalindrome(tmp) && tmp.length() > result.length()) result = tmp; 
+				tmp = string(it, next + 1);
 			}
+			else {
+				tmp = *it;
+			}
+			if(validPalindrome(tmp) && tmp.length() > result.length()) result = tmp;
 		}
 		return result;
 	}
@@ -29,6 +33,9 @@ public:
 int main() {
 	string str = "babad"; //bab
 	Solution s;
-	cout << s.longestPalindrome(str);
+	cout << s.longestPalindrome("babad") << endl;
+	cout << s.longestPalindrome("abc") << endl;
+	cout << s.longestPalindrome("") << endl;
+	cout << s.longestPalindrome("ccc") << endl;
 	return 0;
 }
