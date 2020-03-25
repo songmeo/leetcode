@@ -1,8 +1,9 @@
 #include <iostream>
 #include <vector>
+#include <set>
 using namespace std;
 
-//O(n^2)
+//O(n^2) time exceeded
 class Solution1 {
 public:
 	int subarraySum(vector<int> nums, int k) {
@@ -17,6 +18,22 @@ public:
 		}
 		return result;
 	}
+};
+
+class Solution {
+public: //1 1 1
+	int subarraySum(vector<int> nums, int k) {
+		set<int> sums { 0 };
+		int count = 0;
+		int sum = 0;
+		for(int i = 0; i < (int) nums.size(); i++) {
+			sum += nums[i];
+			sums.insert(sum);
+			if(sums.find(sum - k) != sums.end()) count++;
+		}
+		return count;
+	}
+	
 };
 
 int main() {
