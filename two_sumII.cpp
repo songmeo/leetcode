@@ -4,7 +4,7 @@
 #include <algorithm>
 using namespace std;
 
-class Solution {
+class Solution1 {
 public:
 	int binarySearch(vector<int> & numbers, int target) {
 		int min, mid, max;
@@ -29,6 +29,21 @@ public:
 				result.push_back(i + 1);
 				result.push_back(pos + i + 1 + 1);
 				return result;
+			}
+		}
+		return result;
+	}
+};
+
+class Solution {
+public:
+	vector<int> twoSum(vector<int> & numbers, int target) {
+		vector<int> result;
+		for(int i = 0; i < (int) numbers.size(); i++) {
+			auto pos = find(numbers.begin() + i, numbers.end(), target - numbers[i]);
+			if(pos != numbers.end()) {
+				result.push_back(i + 1);
+				result.push_back(pos - numbers.begin() + 1);
 			}
 		}
 		return result;
