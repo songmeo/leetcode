@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 #include <set>
 using namespace std;
 
@@ -21,15 +22,15 @@ public:
 };
 
 class Solution {
-public: //1 1 1
+public:
 	int subarraySum(vector<int> nums, int k) {
-		set<int> sums { 0 };
+		unordered_map<int,int> sums { {0,1} };
 		int count = 0;
 		int sum = 0;
 		for(int i = 0; i < (int) nums.size(); i++) {
 			sum += nums[i];
-			sums.insert(sum);
-			if(sums.find(sum - k) != sums.end()) count++;
+			if(sums.find(sum - k) != sums.end()) count += sums[sum - k];
+			sums[sum]++;
 		}
 		return count;
 	}
@@ -39,5 +40,7 @@ public: //1 1 1
 int main() {
 	Solution s;
 	cout << s.subarraySum({1,1,1}, 2) << endl;
+	cout << s.subarraySum({1}, 0) << endl;
+	cout << s.subarraySum({0,0,0,0,0,0,0,0,0,0},0) << endl;
 	return 0;
 }
