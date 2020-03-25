@@ -57,6 +57,7 @@ public:
 };
 
 //two pointer technique
+//time O(n), space O(1) 
 class Solution {
 public:
 	vector<int> twoSum(vector<int>& numbers, int target) {
