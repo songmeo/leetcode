@@ -55,24 +55,36 @@ public:
 		return result;
 	}
 };
-//time exceeded
+
+//two pointer technique
 class Solution {
 public:
-	vector<int> twoSum(vector<int> & numbers, int target) {
+	vector<int> twoSum(vector<int>& numbers, int target) {
 		vector<int> result;
-		for(int i = 0; i < (int) numbers.size(); i++) {
-			auto pos = find(numbers.begin() + i + 1, numbers.end(), target - numbers[i]);
-			if(pos != numbers.end()) {
-				result.push_back(i + 1);
-				result.push_back(pos - numbers.begin() + 1);
+		auto it1 = numbers.begin();
+		auto it2 = numbers.end() - 1;
+		while(it1 < it2) {
+			int sum = *it1 + *it2;
+			if(sum == target) {
+				result.push_back(it1 - numbers.begin() + 1);
+				result.push_back(it2 - numbers.begin() + 1);
+				return result;
 			}
+			else if(sum > target) {
+				it2--;
+			}
+			else if(sum < target) {
+				it1++;
+			}
+			else
+				return vector<int>();
 		}
 		return result;
 	}
 };
 
 int main() {
-	Solution2 s;
+	Solution s;
 	vector<int> v{2,7,11,15};
 	for(int i : s.twoSum(v, 9)) {
 		cout << i << " ";
