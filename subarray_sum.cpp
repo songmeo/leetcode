@@ -21,6 +21,7 @@ public:
 	}
 };
 
+//time O(n) only loop through the array once, space O(n) number of sum in the array at most is equal to array size
 class Solution {
 public:
 	int subarraySum(vector<int> nums, int k) {
