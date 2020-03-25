@@ -4,6 +4,7 @@
 #include <algorithm>
 using namespace std;
 
+//binary search 
 class Solution1 {
 public:
 	int binarySearch(vector<int> & numbers, int target) {
@@ -35,12 +36,32 @@ public:
 	}
 };
 
+//library binary search
+class Solution2 {
+public:
+	vector<int> twoSum(vector<int>& numbers, int target) {
+		vector<int> result;
+		unordered_map<int,int> m;
+		for(int i = 0; i < (int)numbers.size(); i++) {
+			m[numbers[i]] = i;
+		}
+		for(int i = 0; i < (int) numbers.size(); i++) {
+			if(binary_search(numbers.begin() + i + 1, numbers.end(), target - numbers[i])) {
+				result.push_back(i + 1);
+				result.push_back(m[target - numbers[i]] + 1);
+				return result;
+			}
+		}
+		return result;
+	}
+};
+//time exceeded
 class Solution {
 public:
 	vector<int> twoSum(vector<int> & numbers, int target) {
 		vector<int> result;
 		for(int i = 0; i < (int) numbers.size(); i++) {
-			auto pos = find(numbers.begin() + i, numbers.end(), target - numbers[i]);
+			auto pos = find(numbers.begin() + i + 1, numbers.end(), target - numbers[i]);
 			if(pos != numbers.end()) {
 				result.push_back(i + 1);
 				result.push_back(pos - numbers.begin() + 1);
@@ -51,9 +72,9 @@ public:
 };
 
 int main() {
-	Solution s;
-	vector<int> v{5,25,75};
-	for(int i : s.twoSum(v, 100)) {
+	Solution2 s;
+	vector<int> v{2,7,11,15};
+	for(int i : s.twoSum(v, 9)) {
 		cout << i << " ";
 	}
 	return 0;
