@@ -38,7 +38,7 @@ public:
 };
 
 //using std erase and find. still slower than hash map
-class Solution {
+class Solution3 {
 public:
 	int singleNumber(vector<int>& nums) {
 		for(auto it = nums.begin(); it != nums.end();) {
@@ -54,6 +54,24 @@ public:
 		return nums[0];
 	}
 };
+
+//math
+class Solution {
+public:
+	int singleNumber(vector<int>& nums) {
+		unordered_set<int> s;
+		int tmp = 0;
+		for(int i : nums) {
+			s.insert(i);
+			tmp += i;
+		}
+		for(int i : s){
+			tmp -= i*2;
+		}
+		return tmp*-1;
+	}
+};
+
 int main() {
 	vector<int> v = {4,1,2,1,2};
 	Solution s;
