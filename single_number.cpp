@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <set>
+#include <unordered_set>
 #include <unordered_map>
 using namespace std;
 
@@ -22,10 +22,11 @@ public:
 	}
 };
 
-class Solution {
+//using set and find std (even slower)
+class Solution2 {
 public:
 	int singleNumber(vector<int>& nums) {
-		set<int> s;
+		unordered_set<int> s;
 		for(auto it = nums.begin(); it != nums.end(); it++) {
 			auto tmp = find(it + 1, nums.end(), *it); 
 			if(tmp != nums.end()) s.insert(*it);
@@ -36,8 +37,25 @@ public:
 	}
 };
 
+//using std erase and find. still slower than hash map
+class Solution {
+public:
+	int singleNumber(vector<int>& nums) {
+		for(auto it = nums.begin(); it != nums.end();) {
+			auto tmp = find(it + 1, nums.end(), *it); 
+			if(tmp != nums.end()) {
+				nums.erase(tmp);
+				nums.erase(it);
+			}
+			else {
+				it++;
+			}
+		}
+		return nums[0];
+	}
+};
 int main() {
-	vector<int> v = {2,2,1};
+	vector<int> v = {4,1,2,1,2};
 	Solution s;
 	cout << s.singleNumber(v) << endl;
 	return 0;
