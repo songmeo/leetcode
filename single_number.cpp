@@ -72,7 +72,7 @@ public:
 	}
 };
 
-//bit manipulation
+//bit manipulation. O(n) time, O(1) space
 class Solution {
 public:
 	int singleNumber(vector<int>& nums) {
