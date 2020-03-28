@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <cmath>
+#include <climits>
 using namespace std;
 
 class Solution {
@@ -14,6 +14,9 @@ public:
 		int result = 0;
 		while(x) {
 			int tmp = x % 10;
+			if(result > INT_MAX/10) {
+				return 0;
+			}
 			result = result*10 + tmp;
 			x /= 10;
 		}
@@ -25,4 +28,6 @@ int main() {
 	Solution s;
 	cout << s.reverse(321) << endl;
 	cout << s.reverse(-321) << endl;
+	cout << s.reverse(120) << endl;
+	cout << s.reverse(1534236469) << endl;
 }
