@@ -8,6 +8,8 @@ public:
 	int reverse(int x) {
 		bool negative = false;
 		if(x < 0) {
+			if(x < INT_MAX*(-1))
+				return 0;
 			x *= -1;
 			negative = true;
 		}
