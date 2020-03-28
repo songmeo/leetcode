@@ -55,8 +55,8 @@ public:
 	}
 };
 
-//math
-class Solution {
+//math. as fast as hash map
+class Solution4 {
 public:
 	int singleNumber(vector<int>& nums) {
 		unordered_set<int> s;
@@ -69,6 +69,18 @@ public:
 			tmp -= i*2;
 		}
 		return tmp*-1;
+	}
+};
+
+//bit manipulation
+class Solution {
+public:
+	int singleNumber(vector<int>& nums) {
+		int result = 0;
+		for(int i : nums) {
+			result ^= i;
+		}
+		return result;
 	}
 };
 
