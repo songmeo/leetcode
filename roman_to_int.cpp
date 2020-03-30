@@ -15,14 +15,14 @@ public:
 	};
 	int romanToInt(string s) {
 		int result = m[s[0]];
-		int tmp = 0;
-		auto it = s.begin() + 1;
-		while(m[*it] <= m[*(it - 1)]) {
-			result += m[*it];
+		for(auto it = s.begin() + 1; it != s.end(); it++) {
+			if(m[*it] <= m[*(it - 1)]) {
+				result += m[*it];
+			}
+			else {
+				result = m[*it] - result;
+			}
 		}
-		
-		
-			
 		return result;
 	}
 };
