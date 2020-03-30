@@ -14,15 +14,21 @@ public:
 		{'M', 1000},
 	};
 	int romanToInt(string s) {
-		int result = 0;
-		for(char i : s) {
-			result += m[i];
+		int result = m[s[0]];
+		int tmp = 0;
+		auto it = s.begin() + 1;
+		while(m[*it] <= m[*(it - 1)]) {
+			result += m[*it];
 		}
+		
+		
+			
 		return result;
 	}
 };
 int main() {
 	Solution s;
-	cout << s.romanToInt("XXVII");
+	cout << s.romanToInt("XXVII") << endl;
+	cout << s.romanToInt("IX") << endl;
 	return 0;
 }
