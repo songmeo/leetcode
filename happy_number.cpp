@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <set>
 using namespace std;
 
 class Solution {
@@ -12,17 +13,18 @@ public:
 			n /= 10;
 		}
 		for(int i : v) {
-			cout << i << " ";
 			sum += i*i;
 		}
-		cout << endl;
 		return sum;
 	}
 	
 	bool isHappy(int n) {
+		set<int> s;
 		int tmp = n;
 		while(tmp != 1) {
 			tmp = next_sum(tmp);
+			if(s.find(tmp) != s.end()) return false;
+			s.insert(tmp);
 		}
 		return true;
 	}
