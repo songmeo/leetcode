@@ -17,13 +17,9 @@ public:
 	};
 	int romanToInt(string s) {
 		int result = 0;
-		string::reverse_iterator it;
-		for(it = s.rbegin(); it != s.rend() - 1; it++) {
-			if(m[*it] > m[*(it + 1)]) {
-				result += m[*it] - m[*(it + 1)];
-			}
+		for(auto it = s.begin(); it != s.end(); it++) {
+			
 		}
-		if(s.length() % 2 != 0) result += m[s[0]]; 
 		return result;
 	}
 };
@@ -31,6 +27,6 @@ int main() {
 	Solution s;
 	cout << s.romanToInt("XXVII") << endl;
 	cout << s.romanToInt("IX") << endl;
-	cout << s.romanToInt("MCMXCIV") << endl; //1994        1000 100 1000 10 100 1 5
+	cout << s.romanToInt("MCMXCIV") << endl; //1994   1000 100 1000 10 100 1 5
 	return 0;
 }

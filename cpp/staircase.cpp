@@ -12,7 +12,7 @@ public:
 };
 
 //bottom up way
-class Solution2 {
+class Solution {
 public:
 	int climbStairs(int n) {
 		vector<int> arr(n + 1);
