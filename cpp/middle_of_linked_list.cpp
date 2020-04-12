@@ -6,7 +6,8 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
+ 
+class Solution1 {
 public:
     ListNode* middleNode(ListNode* head) {
         ListNode* tmp = head;
@@ -22,4 +23,17 @@ public:
         }
         return tmp;
     }
+};
+
+class Solution {
+public:
+	ListNode* middleNode(ListNode* head) {
+		ListNode* slow = head;
+		ListNode* fast = head;
+		while(fast->next) {
+			slow = slow->next;
+			fast = fast->next->next;
+		}
+		return slow;
+	}
 };
