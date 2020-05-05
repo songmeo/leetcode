@@ -6,7 +6,7 @@ using namespace std;
  * Time: O(n)
  * Space: O(1)
 */
-class Solution {
+class Solution1 {
 public:
     void reverseString(vector<char>& s) {
 		if(!s.empty()) {
@@ -19,11 +19,28 @@ public:
     }
 };
 
+//using recursion
+class Solution {
+public:
+	void reverse(vector<char>& s, int i, int j) {
+		if(i >= j) 
+			return;
+		int tmp = move(s[i]);
+		s[i++] = move(s[j]);
+		s[j--] = move(tmp);
+		reverse(s, i, j);
+	}
+	
+	void reverseString(vector<char>& s) {
+		reverse(s, 0, s.size() - 1);
+	}
+};
+
 int main() {
 	Solution s;
 	vector<char> str{'h','e','l','l','o'};
 	vector<char> s1;
-	s.reverseString(s1);
-	for(char i : s1) cout << i;
+	s.reverseString(str);
+	for(char i : str) cout << i;
 	return 0;
 }
