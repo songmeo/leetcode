@@ -8,13 +8,13 @@ def get_optimal_value(capacity, weights, values):
     i = 0
     for v in value_per_weight:
         n = 0
-        while capacity > 0 and n < values[i]:
+        while capacity > 0 and n < weights[i]:
             n = n + 1
             capacity = capacity - 1
-        print(f'n {n} ')
+    #   print(f'n {n} ')
         value = value + v*n
         i = i + 1
-    for l in [value_per_weight, weights, values]: print(*l)
+    # for l in [value_per_weight, weights, values]: print(*l)
     return value
 
 
