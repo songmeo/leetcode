@@ -3,8 +3,14 @@ import sys
 
 def get_optimal_value(capacity, weights, values):
     value = 0.
-    # write your code here
-
+    value_per_weight = [w/v for w, v in zip(weights, values)]
+    value_per_weight, weights, values = zip(*sorted(zip(value_per_weight, weights, values), reverse=True))
+    for v in value_per_weight:
+        n = 0
+        while capacity > n*v and n < values[value_per_weight.index(v)]:
+            n = n + 1
+        value = value + v*n
+        capacity = capacity - (v/weights[value_per_weight.index(v)])*n
     return value
 
 
