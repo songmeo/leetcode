@@ -7,14 +7,14 @@ def compute_min_refills(distance, tank, stops):
     curr = 0
     if tank > distance:
         return 0
+    if distance - stops[-1] > tank:
+        return -1
     for i in range (2, len(stops)):
         if stops[i] - stops[i - 1] > tank:
             return -1
-    if stops[-1] + tank < distance:
-            return -1
-    while curr < distance:
-        curr = max([s for s in stops if s < tank + curr])
-        curr = curr + tank
+
+    while curr + tank < distance:
+        curr = max([s for s in stops if s <= tank + curr])
         ans = ans + 1
     return ans
 
