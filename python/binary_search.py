@@ -2,8 +2,18 @@
 import sys
 
 def binary_search(a, x):
-    left, right = 0, len(a)
+    left, right = 0, len(a) - 1
     # write your code here
+    while left <= right: #0, 6
+    	mid = int((left + right) / 2)
+    	if a[mid] == x:
+    		return mid
+    	elif a[mid] > x:
+    		right = mid - 1
+    	else:
+    		left = mid + 1
+    return -1
+#1 3 4 5 9 10
 
 def linear_search(a, x):
     for i in range(len(a)):
@@ -19,4 +29,4 @@ if __name__ == '__main__':
     a = data[1 : n + 1]
     for x in data[n + 2:]:
         # replace with the call to binary_search when implemented
-        print(linear_search(a, x), end = ' ')
+        print(binary_search(a, x), end = ' ')
