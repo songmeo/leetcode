@@ -10,3 +10,13 @@ class Solution:
             start = start + 1
             end = end - 1
         return True
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = ''.join(filter(str.isalnum,s))
+        while s:
+            if s[0].lower() == s[-1].lower():
+                s = s[1:-1]
+            else:
+                return False
+        return True
